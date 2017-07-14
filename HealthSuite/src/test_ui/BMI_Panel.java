@@ -8,6 +8,8 @@ package test_ui;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,15 +19,15 @@ import javax.swing.JTextField;
  *
  * @author JohnW
  */
-public class BMI_Panel extends PanelParent
+public class BMI_Panel extends PanelParent implements ActionListener
 {
     
     GridBagConstraints gbc = new GridBagConstraints();
-    JLabel WeightText, HeightText, BMITest;
+    JLabel WeightText, HeightText, BMITotal;
     JButton CalcBMI;
     JTextField WeightField, HeightField;
     int Weight, Height;
-    
+    String Total_str = "Your total is:";
    BMI_Panel(MainPanel Parent)
    {
        super();
@@ -41,6 +43,7 @@ public class BMI_Panel extends PanelParent
        CalcBMI    = new JButton("Calculate Bmi");
        WeightField= new JTextField("Weight");
        HeightField= new JTextField("Height");
+       BMITotal   = new JLabel(Total_str);
        
    }
    void InitAddToPanel()
@@ -67,9 +70,31 @@ public class BMI_Panel extends PanelParent
          gbc.gridy = 1;
          this.add(HeightField, gbc);
          
-         gbc.gridx = 2;
+         gbc.gridx = 0;
          gbc.gridy = 2;
          this.add(CalcBMI, gbc);
+         WeightField.addActionListener(this);
+         HeightField.addActionListener(this);
+         CalcBMI.addActionListener(this);
+         gbc.gridx = 0;
+         gbc.gridy = 3;
+         this.add(BMITotal, gbc);
          
    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+       Object o = e.getSource();
+       if(o == CalcBMI)
+       {
+           int total = 0;
+           Weight = Integer.parseInt(WeightField.getText());
+           Height = Integer.parseInt(HeightField.getText());
+           total = Weight * Height;
+           BMITotal.setText(Total_str + total);
+           System.out.println("Hello Dawg");
+       }
+        System.out.println((WeightField.getText()));
+    }
 }
