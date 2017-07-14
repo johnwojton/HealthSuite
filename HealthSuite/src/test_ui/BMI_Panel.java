@@ -26,8 +26,8 @@ public class BMI_Panel extends PanelParent implements ActionListener
     JLabel WeightText, HeightText, BMITotal;
     JButton CalcBMI;
     JTextField WeightField, HeightField;
-    int Weight, Height;
-    String Total_str = "Your total is:";
+    double Weight, Height, BMI;
+    String Total_str = "Your total is: ";
    BMI_Panel(MainPanel Parent)
    {
        super();
@@ -91,7 +91,8 @@ public class BMI_Panel extends PanelParent implements ActionListener
            int total = 0;
            Weight = Integer.parseInt(WeightField.getText());
            Height = Integer.parseInt(HeightField.getText());
-           total = Weight * Height;
+           total = (int) ((Weight / (Height*Height)) * 703);
+           
            BMITotal.setText(Total_str + total);
            System.out.println("Hello Dawg");
        }
