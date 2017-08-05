@@ -71,6 +71,7 @@ public class RightMenuPanel extends PanelParent implements ActionListener
               if(o == WtHRatio)
               {
                WTH = new W_to_H_Ratio();
+           //    Parent.SetCurrentPanel(WTH, "WTH", 500, 350,"Center");
                Parent.Change_A_Panel(WTH, "Center");  //somethings is wrong!
                System.out.println("PUSHed!");
               }

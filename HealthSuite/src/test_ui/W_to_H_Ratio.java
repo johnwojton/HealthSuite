@@ -35,10 +35,26 @@ public class W_to_H_Ratio extends PanelParent
     void InitVar()
     {
         this.setBackground(Color.red);
-        Waist  = new JLabel("Enter Waist Measurement");
-        Height = new JLabel("Enter Height Measurement");
+        Waist  = new JLabel("Waist in Inches");
+        Height = new JLabel("Height in Inches");
         EnterWaist = new JTextField("Waist");
         EnterHeight = new JTextField("Height");
         Calculate = new JButton("Calculate");
+        
+         gbc.gridx = 0;
+         gbc.gridy = 0;
+         this.add(Waist, gbc);
+         
+         gbc.gridx = 1;
+         gbc.gridy = 0;
+         this.add(EnterWaist, gbc);
+         
+         gbc.gridx = 0;
+         gbc.gridy = 1;
+         this.add(Height, gbc);
+        
+         gbc.gridx = 1;
+         gbc.gridy = 1;
+         this.add(EnterHeight, gbc);
     }
 }

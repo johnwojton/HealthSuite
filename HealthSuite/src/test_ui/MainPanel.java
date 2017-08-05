@@ -21,6 +21,7 @@ import javax.swing.JPanel;
  */
 public class MainPanel extends JPanel
 {
+    JPanel CurrentCenterPanel;
     JFrame JF;
     JPanel CurrentPanel;
     JLabel Title;
@@ -29,6 +30,7 @@ public class MainPanel extends JPanel
     double ScreenWidth;
     MainPanel(JFrame JF, JPanel Panel, String Title)
     {
+        
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         ScreenWidth = screenSize.getWidth();
         ScreenHeight = screenSize.getHeight();
@@ -82,11 +84,15 @@ public class MainPanel extends JPanel
     
     JPanel Change_A_Panel(JPanel Panel, String BorderPlacement)
     {
-        
+        if(this.CurrentCenterPanel != null)
+        {
+            this.remove(this.CurrentCenterPanel);
+        }
+        this.CurrentCenterPanel = Panel;
        JP.setVisible(true);
-        JP.add(this.Title);
-        this.CurrentPanel = Panel;
-        this.add(CurrentPanel, BorderPlacement);
+       JP.add(this.Title);
+      //  this.CurrentPanel = Panel;
+        this.add(CurrentCenterPanel, BorderPlacement);
         repaint();
         this.revalidate();
         return CurrentPanel;

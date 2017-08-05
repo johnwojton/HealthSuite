@@ -5,6 +5,7 @@
  */
 package test_ui;
 
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +17,9 @@ public class PanelParent extends JPanel
    public MainPanel Parent;
     PanelParent()
     {
-   
+        this.setVisible(true);
+        this.setBackground(Color.red);
+        this.setSize(100, 100);
     }
     public void setParent(MainPanel Parent)
     {
