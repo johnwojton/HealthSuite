@@ -25,6 +25,7 @@ public class RightMenuPanel extends PanelParent implements ActionListener
     JButton BFP;
     JButton BMR;
     W_to_H_Ratio WTH; 
+    BMI_Panel BMI_P;
    
     RightMenuPanel(MainPanel Parent)
     {
@@ -60,6 +61,7 @@ public class RightMenuPanel extends PanelParent implements ActionListener
          gbc.gridy = 3;
          this.add(BMR, gbc);
          
+         BMI.addActionListener(this);
          WtHRatio.addActionListener(this);
     }
 
@@ -74,6 +76,12 @@ public class RightMenuPanel extends PanelParent implements ActionListener
            //    Parent.SetCurrentPanel(WTH, "WTH", 500, 350,"Center");
                Parent.Change_A_Panel(WTH, "Center");  //somethings is wrong!
                System.out.println("PUSHed!");
+              }
+              else if (o == BMI)
+              {
+               BMI_P = new BMI_Panel(this.Parent);   
+               this.Parent.Change_A_Panel(BMI_P, "Center");
+               System.out.print("BMI_P pushed");
               }
           }
   

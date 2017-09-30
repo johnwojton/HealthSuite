@@ -56,6 +56,38 @@ public class XMLFileController
         System.out.println(USERInfo.age);
        return USERInfo;
     }
-          
+     public static Login_Info XMLLoginReader(String FileName) throws JAXBException
+    {
+            JAXBContext jc = JAXBContext.newInstance(Login_Info.class);
+
+        Unmarshaller unmarshaller = jc.createUnmarshaller();
+        Login_Info Login;
+        Login = (Login_Info) unmarshaller.unmarshal(new File(FileName));
+
+        Marshaller marshaller = jc.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(Login, System.out);
+       return Login;
     }
+     
+         public static void XMLLoginWrite(Login_Info customer, String FileName)
+    {
+        try {
+
+        File file = new File(FileName);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Login_Info.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        // output pretty printed
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        jaxbMarshaller.marshal(customer, file);
+        jaxbMarshaller.marshal(customer, System.out);
+
+          } catch (JAXBException e) {
+          }
+
+    }
+          
+}
 

@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
 public class RegisterPanel extends PanelParent implements ActionListener
 {
     GridBagConstraints gbc = new GridBagConstraints();
@@ -103,13 +104,17 @@ public class RegisterPanel extends PanelParent implements ActionListener
         }
         else if(O == Register)
         {
-            UserInformation NewCustomer = new UserInformation();
-            NewCustomer.setUserName(this.EnterUserName.getText());
-            NewCustomer.setPassword(this.EnterPassword.getText());
-            System.out.println(NewCustomer.getUserName());
-             System.out.println(NewCustomer.getPassword());
-              String location = System.getProperty("user.dir") + "\\UserData\\";//RegisterPanel.class.getProtectionDomain().getCodeSource().getLocation();
+          //  UserInformation NewCustomer = new UserInformation();
+            Login_Info LI = new Login_Info();
+          //  NewCustomer.setUserName(this.EnterUserName.getText());
+           // NewCustomer.setPassword(this.EnterPassword.getText());
+            LI.setUserName(this.EnterUserName.getText());
+            LI.setPassword(this.EnterPassword.getText());
+        //    System.out.println(NewCustomer.getUserName());
+          //   System.out.println(NewCustomer.getPassword());
+              String location = System.getProperty("user.dir") + "\\UserData.xml";//RegisterPanel.class.getProtectionDomain().getCodeSource().getLocation();
               System.out.println(location);
+              XMLFileController.XMLLoginWrite(LI, location);
               
         }
          
