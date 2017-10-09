@@ -15,12 +15,23 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import java.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 public class XMLFileController 
 {
+    int x = 0;
+   static Login_Info_Wrapper LIW;
+   static List<Login_Info> CustomerArray;
+  
     XMLFileController()
     {
+        LIW = new Login_Info_Wrapper();
+         CustomerArray = new ArrayList<Login_Info>();
+         
         
     }
     public static void XMLWrite(UserInformation customer, String FileName)
@@ -88,6 +99,46 @@ public class XMLFileController
           }
 
     }
+         
+         
+         
+         
+          public static void XMLLoginWrite_TEST(Login_Info_Wrapper customer, String FileName)
+    {
+        try {
+
+        File file = new File(FileName);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Login_Info_Wrapper.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        // output pretty printed
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        jaxbMarshaller.marshal(customer, file);
+        jaxbMarshaller.marshal(customer, System.out);
+
+          } catch (JAXBException e) 
+          
+          {
+              
+             System.out.println(e.getLocalizedMessage());
+          }
+
+    }
+         
+         
+         
+          public static void XMLLoginArray(Login_Info customer)
+    {
+       int Length;
+       Length = CustomerArray.size();
+       LIW.Login_List.add(customer);
+       CustomerArray.add(customer);
+       
+       
+
+    }
+
           
 }
 

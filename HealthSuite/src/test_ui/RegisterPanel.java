@@ -114,8 +114,12 @@ public class RegisterPanel extends PanelParent implements ActionListener
           //   System.out.println(NewCustomer.getPassword());
               String location = System.getProperty("user.dir") + "\\UserData.xml";//RegisterPanel.class.getProtectionDomain().getCodeSource().getLocation();
               System.out.println(location);
-              XMLFileController.XMLLoginWrite(LI, location);
+            //  XMLFileController.XMLLoginWrite(LI, location);
               
+             // XMLFileController.XMLLoginArray(LI);
+               //XMLFileController.XMLLoginArray(LI);
+               XMLFileController.XMLLoginArray(LI);
+               XMLFileController.XMLLoginWrite_TEST(XMLFileController.LIW, location);
         }
          
     }
